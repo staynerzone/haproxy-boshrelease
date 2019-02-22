@@ -13,13 +13,17 @@ instance_groups:
   instances: 1
   vm_type: default
   stemcell: default
-  networks: [{name: default}]
+  networks: 
+  - name: default
+    default: [dns,gateway]
+  - name: vip
+    static_ips: [((haproxy_vip))]
   jobs:
   - name: haproxy
     release: haproxy
     properties:
       ha_proxy:
-        disable_http: true
+        disable_http: ((haproxy_disable_http))
 
 update:
   canaries: 1

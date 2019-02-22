@@ -2,13 +2,8 @@
   path: /instance_groups/0/jobs/name=haproxy/properties/ha_proxy/tcp?
   value:
     - name: worker
-      port: 4443
-      backend_servers:
-      - 192.168.0.22
-      - 192.168.0.23
-      - 192.168.0.24
+      port: ((haproxy_frontend_port))
+      backend_servers: ((haproxy_backend_servers))
       balance: roundrobin
-      backend_port: 31719
-#      ssl: true
-#      backend_ssl: noverify
+      backend_port: ((haproxy_backend_port))
 

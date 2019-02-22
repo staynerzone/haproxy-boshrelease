@@ -1,6 +1,0 @@
-- type: remove
-  path: /instance_groups/0/jobs/name=haproxy/properties/ha_proxy/backend_port
-
-- type: remove
-  path: /instance_groups/0/jobs/name=haproxy/properties/ha_proxy/backend_servers
-
