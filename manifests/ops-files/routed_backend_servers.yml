@@ -10,4 +10,7 @@
       balance: roundrobin
       backend_port: 31719
       ssl: true
-      backend_ssl: "noverify"
+      backend_ssl: noverify
+
+- type: replace
+  /instance_groups/0/jobs/name=haproxy/properties/ha_proxy/disable
