@@ -19,8 +19,7 @@ instance_groups:
     release: haproxy
     properties:
       ha_proxy:
-        backend_port: ((haproxy-backend-port))
-        backend_servers: ((haproxy-backend-servers))
+        disable_http: true
 
 update:
   canaries: 1
