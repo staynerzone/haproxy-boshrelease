@@ -1,0 +1,43 @@
+---
+name: haproxy
+
+addons:
+- name: bpm
+  jobs:
+  - name: bpm
+    release: bpm
+
+instance_groups:
+- name: haproxy
+  azs: [z1]
+  instances: 1
+  vm_type: default
+  stemcell: default
+  networks: [{name: default}]
+  jobs:
+  - name: haproxy
+    release: haproxy
+    properties:
+      ha_proxy:
+        backend_port: ((haproxy-backend-port))
+        backend_servers: ((haproxy-backend-servers))
+
+update:
+  canaries: 1
+  max_in_flight: 1
+  canary_watch_time: 1000-30000
+  update_watch_time: 1000-30000
+  serial: false
+
+stemcells:
+  - alias: default
+    os: ubuntu-xenial
+    version: latest
+
+releases:
+- name: bpm
+  version: latest
+- name: haproxy
+  version: 9.4.2
+  url: https://github.com/cloudfoundry-incubator/haproxy-boshrelease/releases/download/v9.4.2/haproxy-9.4.2.tgz
+  sha1: 1232ac3a62f29bf655fef056741571bd14b22146
