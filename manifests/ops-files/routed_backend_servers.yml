@@ -1,0 +1,14 @@
+- type: replace
+  path: /instance_groups/0/jobs/name=haproxy/properties/ha_proxy/routed_backend_servers?
+  value:
+    tcp:
+      - name: worker
+        port: 4443
+        backend_servers:
+        - 192.168.0.22
+        - 192.168.0.23
+        - 192.168.0.24
+        balance: roundrobin
+        backend_port: 31719
+        ssl: true
+        backend_ssl: "noverify"
