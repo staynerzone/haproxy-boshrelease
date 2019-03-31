@@ -1,5 +1,5 @@
 - type: replace
   path: /instance_groups/0/jobs/name=haproxy/properties/ha_proxy?
   value:
-    - backend_port: ((haproxy-backend-port))
-      backend_servers: ((haproxy-backend-servers))
+    backend_port: ((haproxy-backend-port))
+    backend_servers: ((haproxy-backend-servers))
